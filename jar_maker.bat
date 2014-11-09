@@ -1,0 +1,1 @@
+jar cf JSignalGenerator.jar Beats.class BeatsDialog.class BinauralBeats.class BinauralBeatsDialog.class ComplexSignal.class FreqDialog.class GuiWindow.class JSignalGenerator.class PlayerMono.class PlayerStereo.class Signal.class Sinusoid.class
