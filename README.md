@@ -1,7 +1,7 @@
 JSignalGenerator
 ================
 
-A small program designed to synthesize different frequency patterns. It is easy to create binaural beats with it.
+A small java program designed to synthesize different frequency patterns. It is easy to create binaural beats with it.
 
 To compile the program by means of jdk:
 - clone the repository.
