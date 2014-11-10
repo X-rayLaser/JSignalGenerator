@@ -55,13 +55,20 @@ class BinauralBeatsDialog implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent ae){
-
-		int freq 	= Integer.parseInt(freqField.getText() );
-		int beatsFreq   = Integer.parseInt(beatsFreqField.getText());
-		int percentage  = Integer.parseInt(volumeField.getText() );
- 		int vol 	= 32768 / 100 * percentage;
+		try{   
+			int freq 	= Integer.parseInt(freqField.getText() );
+			int beatsFreq   = Integer.parseInt(beatsFreqField.getText());
+			int percentage  = Integer.parseInt(volumeField.getText() );
+ 			int vol 	= 32768 / 100 * percentage;
 		
-		BinauralBeats snl = new BinauralBeats (44100, freq, beatsFreq, vol );
-		w.addSignal(snl);   
+			BinauralBeats snl = new BinauralBeats (44100, freq, beatsFreq, vol );
+			w.addSignal(snl); 
+		}
+		catch(NumberFormatException ob)
+		{
+			JOptionPane.showMessageDialog(null, "Invalid input. Number must be integer", 
+							"JSignalGenerator",
+							JOptionPane.INFORMATION_MESSAGE);
+		}  
 	} 
 }

@@ -61,16 +61,22 @@ class BeatsDialog implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent ae){
-
-		int freq 	= Integer.parseInt(freqField.getText() );
-		int beatsFreq   = Integer.parseInt(beatsFreqField.getText());
-		int chan 	= Integer.parseInt(chanField.getText() );
-		 
-		int percentage  = Integer.parseInt(volumeField.getText() );
- 		int vol =  32768 / 100 * percentage / 2;
+		try{
+			int freq 	    = Integer.parseInt(freqField.getText() );
+			int beatsFreq   = Integer.parseInt(beatsFreqField.getText());
+			int chan 	    = Integer.parseInt(chanField.getText() );		 
+			int percentage  = Integer.parseInt(volumeField.getText() );
+ 			int vol =  32768 / 100 * percentage / 2;
 		
-		Beats snl = new Beats (44100);
-		snl.fill_channel(freq, beatsFreq, vol, chan);
-		w.addSignal(snl);   
+			Beats snl = new Beats (44100);
+			snl.fill_channel(freq, beatsFreq, vol, chan);
+			w.addSignal(snl);
+		}
+		catch (NumberFormatException ob)
+		{
+			JOptionPane.showMessageDialog(null, "Invalid input. Number must be integer", 
+							"JSignalGenerator",
+							JOptionPane.INFORMATION_MESSAGE);
+		}   
 	} 
 }

@@ -55,16 +55,23 @@ class FreqDialog implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ae){
-
-		int freq = Integer.parseInt(freqField.getText() );
-		int chan = Integer.parseInt( chanField.getText() );
+		try{
+			int freq = Integer.parseInt(freqField.getText() );
+			int chan = Integer.parseInt( chanField.getText() );
 		 
-		int percentage  = Integer.parseInt(volumeField.getText() );
- 		int vol =  32768 / 100 * percentage;
+			int percentage  = Integer.parseInt(volumeField.getText() );
+ 			int vol =  32768 / 100 * percentage;
 		
-		Sinusoid snl = new Sinusoid(44100);
-		snl.fill_channel(freq , vol, chan);
-		w.addSignal(snl);   
+			Sinusoid snl = new Sinusoid(44100);
+			snl.fill_channel(freq , vol, chan);
+			w.addSignal(snl);   
+		}
+		catch(NumberFormatException ob)
+		{
+			JOptionPane.showMessageDialog(null, "Invalid input. Number must be integer", 
+							"JSignalGenerator",
+							JOptionPane.INFORMATION_MESSAGE);
+		}
 	} 
 
 }
